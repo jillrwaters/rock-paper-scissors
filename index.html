@@ -8,7 +8,6 @@
     function playRound(pC, cC) { //pC = player choice, Cc = computer choice
         if (!choices.includes(pC)) {
             pC = prompt("Invalid Entry. You must choose rock, paper, or scissors.")
-            game()
         }
         if (pC === cC) {
             return "Tie! Refresh the page to play again."
