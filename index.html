@@ -6,6 +6,7 @@
         return choices[choice]
     }
     function playRound(pC, cC) { //pC = player choice, Cc = computer choice
+        pC =pC.toLowerCase()
         if (!choices.includes(pC)) {
             pC = prompt("Invalid Entry. You must choose rock, paper, or scissors.")
         }
