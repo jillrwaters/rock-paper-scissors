@@ -5,8 +5,17 @@
         let choice = Math.floor(Math.random()*3)
         return choices[choice]
     }
-    function playRound(playerSelection, computerSelection) {
-        return "You lose! Paper beats Rock"
+    function playRound(pC, cC) { //pC = player choice, Cc = computer choice
+        switch(pC,cC){
+            case pC === "rock" && cC === "scissors":
+                return "You win! Rock beats Scissors.";
+            case pC === "scissors" && cC === "paper":
+                return "You win! Scissors beats Paper.";
+            case pC === "paper" && cC === "rock":
+                return "You win! Paper beats Rock.";
+            default:
+                return "You lose! " + cC + " beats " + pC + "."
+        }
     }
     function game() {
         playRound()
