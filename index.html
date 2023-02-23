@@ -13,6 +13,8 @@
                 return "You win! Scissors beats Paper.";
             case pC === "paper" && cC === "rock":
                 return "You win! Paper beats Rock.";
+            case pC === cC:
+                return "Tie!"
             default:
                 return "You lose! " + cC + " beats " + pC + "."
         }
