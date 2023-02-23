@@ -8,6 +8,7 @@
     function playRound(pC, cC) { //pC = player choice, Cc = computer choice
         if (!choices.includes(pC)) {
             pC = prompt("Invalid Entry. You must choose rock, paper, or scissors.")
+            game()
         }
         if (pC === cC) {
             return "Tie! Refresh the page to play again."
@@ -22,12 +23,12 @@
                 return "You win! Paper beats Rock.";
     
             default:
-                return "You lose! ${cC} beats ${pC}."
+                return `You lose! ${cC} beats ${pC}.`
         }
         console.log("Refresh the page to play again.")
     }
     function game() {
-        playRound()
+        playRound(prompt("Enter your choice:"), getComputerChoice())
     }
-    console.log(playRound(prompt("Enter your choice:"), getComputerChoice()))
+    console.log(game())
 </script>
