@@ -17,7 +17,9 @@
     }
 
     function getHumanChoice() {
-        return prompt("Enter your choice, human").toLowerCase();
+        // return prompt("Enter your choice, human").toLowerCase();
+        let choice = Math.floor(Math.random() * 3);
+        return game.choices[choice];
     }
 
     function playRound(humanChoice, computerChoice) {
