@@ -1,4 +1,3 @@
-<script>
     const game = {
         choices: ["rock", "paper", "scissors"],
         win: "You win! ",
@@ -79,4 +78,3 @@
     }
 
     playGame()
-</script>
