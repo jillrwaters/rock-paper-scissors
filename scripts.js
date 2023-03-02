@@ -5,7 +5,6 @@ function getComputerChoice() {
     return choices[choice]
 }
 
-
 function getHumanChoice(){
     let input = prompt("Enter your choice, human.")
     input = input.toLowerCase()
@@ -17,6 +16,7 @@ function validateHumanChoice(choice){
 }
 
 function playRound(computerChoice, humanChoice){
+    
     console.log("I chose:",computerChoice, "| You chose:", humanChoice)
     if (validateHumanChoice(humanChoice)){
         if ((humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "scissors" && computerChoice === "paper") || (humanChoice === "paper" && computerChoice === "rock")){
@@ -36,6 +36,7 @@ function playRound(computerChoice, humanChoice){
         alert(`You must choose rock, paper, or scissors, human. You typed "${humanChoice}". What were you thinking? Try again.`)
         
     }
+    
 }
 
 function game(){
@@ -54,6 +55,8 @@ function game(){
         else {
             ties++
         }
+        console.log(`Computer: ${computerScore} | Human: ${humanScore}`)
+        console.log("-----------------------------")
     }
 
     console.log('FINAL SCORE:')
@@ -68,5 +71,8 @@ function game(){
     else {
         console.log("Tied game. Rematch?")
     }
+
+    let button = document.querySelector("button")
+    button.innerText = "REMATCH"
 }
 
