@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
 </head>
 
 <body>
@@ -63,35 +63,4 @@
     }
 </style>
 
-<script>
-    const choices = ["rock", "paper", "scissors"]
-    function getComputerChoice() {
-        let choice = Math.floor(Math.random() * 3)
-        return choices[choice]
-    }
-    function playRound(pC, cC) { //pC = player choice, Cc = computer choice
-        pC = pC.toLowerCase()
-        if (!choices.includes(pC)) {
-            pC = prompt("Invalid Entry. You must choose rock, paper, or scissors.")
-        }
-        if (pC === cC) {
-            return "Tie! Refresh the page to play again."
-        }
-
-        switch (pC, cC) {
-            case pC === "rock" && cC === "scissors":
-                return "You win! rock beats scissors.";
-            case pC === "scissors" && cC === "paper":
-                return "You win! scissors beats paper.";
-            case pC === "paper" && cC === "rock":
-                return "You win! paper beats rock.";
-            default:
-                return `You lose! ${cC} beats ${pC}.`
-        }
-        console.log("Refresh the page to play again.")
-    }
-    // function game() {
-    //     return playRound(prompt("Enter your choice:"), getComputerChoice())
-    // }
-    // console.log(game())
-</script>
+<script src="scripts.js"></script>
