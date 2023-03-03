@@ -7,41 +7,42 @@ function getComputerChoice() {
 }
 
 // RPS BUTTONS
-const CHOICES = document.querySelectorAll(".choices")
+const rock = document.querySelector("#rock")
+const paper = document.querySelector("#paper")
+const scissors = document.querySelector("#scissors")
 
-for (c in CHOICES) {
-    c.addEventListener("click", (e) => {
-        humanChoice = e.innerHTML
-        console.log(humanChoice)
-    })
+
+rock.addEventListener("click", () => {
+    playRound(getComputerChoice(), "rock")
+})
+paper.addEventListener("click", () => {
+    playRound(getComputerChoice(), "paper")
+})
+scissors.addEventListener("click", () => {
+    playRound(getComputerChoice(), "scissors")
+})
+
+
+
+function playRound(computerChoice, humanChoice) {
+
+    console.log("I chose:", computerChoice, "| You chose:", humanChoice)
+
+    if ((humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "scissors" && computerChoice === "paper") || (humanChoice === "paper" && computerChoice === "rock")) {
+        console.log(`You win this round, human. ${humanChoice} beats ${computerChoice}.`)
+        return "human"
+    }
+    else if (humanChoice === computerChoice) {
+        console.log("Tie")
+        return "tie"
+    }
+    else {
+        console.log(`You lose this round, human. ${computerChoice} beats ${humanChoice}.`)
+        return "computer"
+    }
+
+
 }
-
-
-console.log(humanChoice)
-
-
-// function playRound(computerChoice, humanChoice) {
-
-//     console.log("I chose:", computerChoice, "| You chose:", humanChoice)
-//     if (validateHumanChoice(humanChoice)) {
-//         if ((humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "scissors" && computerChoice === "paper") || (humanChoice === "paper" && computerChoice === "rock")) {
-//             console.log(`You win this round, human. ${humanChoice} beats ${computerChoice}.`)
-//             return "human"
-//         }
-//         else if (humanChoice === computerChoice) {
-//             console.log("Tie")
-//             return "tie"
-//         }
-//         else {
-//             console.log(`You lose this round, human. ${computerChoice} beats ${humanChoice}.`)
-//             return "computer"
-//         }
-//     }
-//     else {
-//         alert(`You must choose rock, paper, or scissors, human. You typed "${humanChoice}". What were you thinking? Try again.`)
-//     }
-
-// }
 
 // function game() {
 //     let computerScore = 0
