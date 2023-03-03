@@ -58,13 +58,12 @@ function playRound(computerChoice, humanChoice) {
     }
     
 }
+
 let humanScore = 0
-    let computerScore = 0
-    let ties = 0
+let computerScore = 0
+let ties = 0
 
 function keepScore(winner){
-    
-
     switch(winner){
         case "human":
             humanScore++
@@ -79,9 +78,26 @@ function keepScore(winner){
     scores.textContent = `Human: ${humanScore} | Computer: ${computerScore} | Ties: ${ties}`
 }
 
-function endGame(){
 
+function declareWinner(){
+    console.log(`${endGame()}`)
+    humanResult.textContent = ''
+    computerResult.textContent = ''
 }
+
+function endGame(){
+    if (humanScore === 5){
+        return "You won the game, human."
+    }
+    else if (computerScore === 5){
+        return "I beat you, human! I win the game."
+    }
+    else if (ties === 5){
+        return "The game was a tie."
+    }
+}
+
+declareWinner()
 
 
 
