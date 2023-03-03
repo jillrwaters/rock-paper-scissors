@@ -35,16 +35,16 @@ function playRound(computerChoice, humanChoice) {
     results.appendChild(roundResult)
 
     if ((humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "scissors" && computerChoice === "paper") || (humanChoice === "paper" && computerChoice === "rock")) {
-        winner.style.color = "blue"            
+        // winner.style.color = "blue"            
         winner.textContent = `You win this round, human.`
         keepScore("human")
     }
     else if (humanChoice === computerChoice) {
-        winner.style.color = "green"
+        // winner.style.color = "green"
         winner.textContent = `Tie! Try again.`
     }
     else {
-        winner.style.color = "red"
+        // winner.style.color = "red"
         winner.textContent = `I win this round!`
         keepScore("computer")
     }
@@ -64,25 +64,25 @@ function keepScore(winner){
     scores.textContent = `Human: ${humanScore} | Computer: ${computerScore}`
     
 }
-
+results.removeChild(computerResult)
 // END OF GAME
 function checkScores(){
     if (humanScore === 5){
         clearScreen()
-        winner.textContent = `You won the game, human.`
+        winner.textContent = `You won the game, human. Refresh the page to play again.`
     }
     else if (computerScore === 5){
         clearScreen()
-        winner.textContent = `I beat you, human! I win the game.`
+        winner.textContent = `I beat you, human! I win the game. Refresh the page to play again.`
     }
 }
 
 function clearScreen() {
-    
     choicesContainer.removeChild(rock)
     choicesContainer.removeChild(paper)
     choicesContainer.removeChild(scissors)
     results.removeChild(roundResult)
-    results.removeChild(computerResult)
     flexContainer.removeChild(welcome)
 }
+
+
