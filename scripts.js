@@ -37,7 +37,7 @@ function playRound(computerChoice, humanChoice) {
 
     
     humanResult.textContent = `You chose ${humanChoice}.`
-    computerResult.textContent = `I, the computer, chose ${computerChoice}.`
+    computerResult.textContent = `I, The Computer, chose ${computerChoice}.`
     results.appendChild(humanResult)
     results.appendChild(computerResult)
 
