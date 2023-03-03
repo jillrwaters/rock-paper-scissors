@@ -12,11 +12,17 @@ const paper = document.querySelector("#paper")
 const scissors = document.querySelector("#scissors")
 
 
+// DISPLAY RESULTS
+const results = document.querySelector("#results")
+const humanResult = document.createElement("p")
+const computerResult = document.createElement("p")
+const winner = document.createElement("p")
+results.appendChild(winner)
+winner.style.color = "blue"
 
 
 rock.addEventListener("click", () => {
-    playRound(getComputerChoice(), "rock")
-    
+    playRound(getComputerChoice(), "rock")    
 })
 paper.addEventListener("click", () => {
     playRound(getComputerChoice(), "paper")
@@ -29,20 +35,28 @@ scissors.addEventListener("click", () => {
 
 function playRound(computerChoice, humanChoice) {
 
-    console.log("I chose:", computerChoice, "| You chose:", humanChoice)
+    
+    humanResult.textContent = `You chose ${humanChoice}.`
+    computerResult.textContent = `I, the computer, chose ${computerChoice}.`
+    results.appendChild(humanResult)
+    results.appendChild(computerResult)
 
     if ((humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "scissors" && computerChoice === "paper") || (humanChoice === "paper" && computerChoice === "rock")) {
-        console.log(`You win this round, human. ${humanChoice} beats ${computerChoice}.`)
+        winner.style.color = "blue"            
+        winner.textContent = `You win, human.`
         return "human"
     }
     else if (humanChoice === computerChoice) {
-        console.log("Tie")
+        winner.style.color = "green"
+        winner.textContent = `Tie!`
         return "tie"
     }
     else {
-        console.log(`You lose this round, human. ${computerChoice} beats ${humanChoice}.`)
+        winner.style.color = "red"
+        winner.textContent = `I beat you, human!`
         return "computer"
     }
+    
 }
 
 
