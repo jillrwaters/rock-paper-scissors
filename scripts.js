@@ -17,8 +17,9 @@ const results = document.querySelector("#results")
 const humanResult = document.createElement("p")
 const computerResult = document.createElement("p")
 const winner = document.createElement("p")
-results.appendChild(winner)
-winner.style.color = "blue"
+    results.appendChild(winner)
+    winner.style.color = "blue"
+const scores = document.querySelector("#scores")
 
 
 rock.addEventListener("click", () => {
@@ -35,7 +36,6 @@ scissors.addEventListener("click", () => {
 
 function playRound(computerChoice, humanChoice) {
 
-    
     humanResult.textContent = `You chose ${humanChoice}.`
     computerResult.textContent = `I, The Computer, chose ${computerChoice}.`
     results.appendChild(humanResult)
@@ -43,20 +43,44 @@ function playRound(computerChoice, humanChoice) {
 
     if ((humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "scissors" && computerChoice === "paper") || (humanChoice === "paper" && computerChoice === "rock")) {
         winner.style.color = "blue"            
-        winner.textContent = `You win, human.`
-        return "human"
+        winner.textContent = `You win this round, human.`
+        keepScore("human")
     }
     else if (humanChoice === computerChoice) {
         winner.style.color = "green"
         winner.textContent = `Tie!`
-        return "tie"
+        keepScore("tie")
     }
     else {
         winner.style.color = "red"
-        winner.textContent = `I beat you, human!`
-        return "computer"
+        winner.textContent = `I win this round, human!`
+        keepScore("computer")
     }
     
+}
+let humanScore = 0
+    let computerScore = 0
+    let ties = 0
+
+function keepScore(winner){
+    
+
+    switch(winner){
+        case "human":
+            humanScore++
+            break;
+        case "computer":
+            computerScore++
+            break;
+        case "tie":
+            ties++
+            break;
+    }
+    scores.textContent = `Human: ${humanScore} | Computer: ${computerScore} | Ties: ${ties}`
+}
+
+function endGame(){
+
 }
 
 
@@ -64,13 +88,22 @@ function playRound(computerChoice, humanChoice) {
 
 
 
-// function game() {
+
+
+
+
+
+
+
+
+
+// function game(humanChoice) {
 //     let computerScore = 0
 //     let humanScore = 0
 //     let ties = 0
 
 //     for (let i = 0; i < 5; i++) {
-//         let result = playRound(getComputerChoice(), getHumanChoice())
+//         let result = playRound(getComputerChoice(), humanChoice)
 //         if (result === "human") {
 //             humanScore++
 //         }
@@ -80,8 +113,8 @@ function playRound(computerChoice, humanChoice) {
 //         else {
 //             ties++
 //         }
-//         console.log(`Computer: ${computerScore} | Human: ${humanScore}`)
-//         console.log("-----------------------------")
+//         scores.textContent = `Computer: ${computerScore} | Human: ${humanScore}`
+        
 //     }
 
 //     console.log('FINAL SCORE:')
