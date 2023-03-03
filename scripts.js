@@ -1,5 +1,5 @@
 const choices = ["rock", "paper", "scissors"]
-var humanChoice
+
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3)
@@ -12,8 +12,11 @@ const paper = document.querySelector("#paper")
 const scissors = document.querySelector("#scissors")
 
 
+
+
 rock.addEventListener("click", () => {
     playRound(getComputerChoice(), "rock")
+    
 })
 paper.addEventListener("click", () => {
     playRound(getComputerChoice(), "paper")
@@ -40,9 +43,12 @@ function playRound(computerChoice, humanChoice) {
         console.log(`You lose this round, human. ${computerChoice} beats ${humanChoice}.`)
         return "computer"
     }
-
-
 }
+
+
+
+
+
 
 // function game() {
 //     let computerScore = 0
