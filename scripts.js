@@ -11,8 +11,7 @@ const winner = document.createElement("p")
 results.appendChild(winner)
 const scores = document.querySelector("#scores")
 const welcome = document.querySelector("#welcome")
-const flexContainer = document.querySelector(".flex-container")
-
+const flexContainer = document.querySelector(".main")
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3)
