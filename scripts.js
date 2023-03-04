@@ -1,77 +1,87 @@
+// VARIABLES
 const choices = ["rock", "paper", "scissors"]
+let humanScore = 0
+let computerScore = 0
+const rock = document.querySelector("#rock")
+const paper = document.querySelector("#paper")
+const scissors = document.querySelector("#scissors")
+const results = document.querySelector("#results")
+const roundResult = document.createElement("p")
+const winner = document.createElement("p")
+results.appendChild(winner)
+const scores = document.querySelector("#scores")
+const welcome = document.querySelector("#welcome")
+const flexContainer = document.querySelector(".main")
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3)
     return choices[choice]
 }
 
-function getHumanChoice() {
-    let input = prompt("Enter your choice, human.")
-    input = input.toLowerCase()
-    return input
-}
-
-function validateHumanChoice(choice) {
-    return choices.includes(choice)
-}
+// START ROUND
+rock.addEventListener("click", () => {
+    playRound(getComputerChoice(), "rock")    
+})
+paper.addEventListener("click", () => {
+    playRound(getComputerChoice(), "paper")
+})
+scissors.addEventListener("click", () => {
+    playRound(getComputerChoice(), "scissors")
+})
 
 function playRound(computerChoice, humanChoice) {
+    roundResult.textContent = `You chose ${humanChoice}. I, The Computer, chose ${computerChoice}.`
+    results.appendChild(roundResult)
 
-    console.log("I chose:", computerChoice, "| You chose:", humanChoice)
-    if (validateHumanChoice(humanChoice)) {
-        if ((humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "scissors" && computerChoice === "paper") || (humanChoice === "paper" && computerChoice === "rock")) {
-            console.log(`You win this round, human. ${humanChoice} beats ${computerChoice}.`)
-            return "human"
-        }
-        else if (humanChoice === computerChoice) {
-            console.log("Tie")
-            return "tie"
-        }
-        else {
-            console.log(`You lose this round, human. ${computerChoice} beats ${humanChoice}.`)
-            return "computer"
-        }
+    if ((humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "scissors" && computerChoice === "paper") || (humanChoice === "paper" && computerChoice === "rock")) {
+        // winner.style.color = "blue"            
+        winner.textContent = `You win this round, human.`
+        keepScore("human")
+    }
+    else if (humanChoice === computerChoice) {
+        // winner.style.color = "green"
+        winner.textContent = `Tie! Try again.`
     }
     else {
-        alert(`You must choose rock, paper, or scissors, human. You typed "${humanChoice}". What were you thinking? Try again.`)
+        // winner.style.color = "red"
+        winner.textContent = `I win this round!`
+        keepScore("computer")
     }
-
+    checkScores()
+    
 }
 
-function game() {
-    let computerScore = 0
-    let humanScore = 0
-    let ties = 0
-
-    for (let i = 0; i < 5; i++) {
-        let result = playRound(getComputerChoice(), getHumanChoice())
-        if (result === "human") {
+function keepScore(winner){
+    switch(winner){
+        case "human":
             humanScore++
-        }
-        else if (result === "computer") {
+            break;
+        case "computer":
             computerScore++
-        }
-        else {
-            ties++
-        }
-        console.log(`Computer: ${computerScore} | Human: ${humanScore}`)
-        console.log("-----------------------------")
+            break;
     }
-
-    console.log('FINAL SCORE:')
-    console.log(`Computer: ${computerScore} | You: ${humanScore}`)
-
-    if (computerScore > humanScore) {
-        console.log("YOU LOSE, HUMAN. I, THE COMPUTER, HAVE BEAT YOU. HA!")
-    }
-    else if (humanScore > computerScore) {
-        console.log("You win, human. Good game.")
-    }
-    else {
-        console.log("Tied game. Rematch?")
-    }
-
-    let button = document.querySelector("button")
-    button.innerText = "REMATCH"
+    scores.textContent = `Human: ${humanScore} | Computer: ${computerScore}`
+    
 }
+results.removeChild(computerResult)
+// END OF GAME
+function checkScores(){
+    if (humanScore === 5){
+        clearScreen()
+        winner.textContent = `You won the game, human. Refresh the page to play again.`
+    }
+    else if (computerScore === 5){
+        clearScreen()
+        winner.textContent = `I beat you, human! I win the game. Refresh the page to play again.`
+    }
+}
+
+function clearScreen() {
+    choicesContainer.removeChild(rock)
+    choicesContainer.removeChild(paper)
+    choicesContainer.removeChild(scissors)
+    results.removeChild(roundResult)
+    flexContainer.removeChild(welcome)
+}
+
 
